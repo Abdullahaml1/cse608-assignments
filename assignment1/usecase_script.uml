@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+
+actor Client as cl
+
+package Staff {
+  actor "Product Manager" as m
+  actor Designer as d
+  actor "Top Designer" as topd
+  actor "Customer Service" as cs
+}
+package ToyFactory {
+  usecase "Submit Proposal" as u_sp
+
+  usecase "Devloping A Prototype" as u_dp
+
+  usecase "Review the Prototype" as u_rp
+
+  usecase "Proudce  Toys" as u_pt
+
+  usecase "Interact and Get Feedback" as u_gf
+  
+}
+topd --> d
+cl --> u_sp
+topd --> u_dp
+m --> u_rp
+d --> u_pt
+
+cl --> u_gf
+cs --> u_gf
+@enduml
