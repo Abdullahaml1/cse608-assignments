@@ -8,6 +8,7 @@ package Staff {
   actor Designer as d
   actor "Top Designer" as topd
   actor "Customer Service" as cs
+  actor "Business Analyst" as bsa
 }
 package ToyFactory {
   usecase "Submit Proposal" as u_sp
@@ -19,6 +20,8 @@ package ToyFactory {
   usecase "Proudce  Toys" as u_pt
 
   usecase "Interact and Get Feedback" as u_gf
+
+  usecase "Analyze Business" as u_ab
   
 }
 topd --> d
@@ -29,4 +32,6 @@ d --> u_pt
 
 cl --> u_gf
 cs --> u_gf
+
+bsa --> u_ab
 @enduml
