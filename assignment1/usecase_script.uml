@@ -1,15 +1,19 @@
 @startuml
 left to right direction
 
+actor User as user
+
 actor Client as cl
 
-package Staff {
+package Staff as staff{
   actor "Product Manager" as m
   actor Designer as d
   actor "Top Designer" as topd
   actor "Customer Service" as cs
 }
 package ToyFactory {
+  usecase "Login" as u_login
+
   usecase "Submit Proposal" as u_sp
 
   usecase "Devloping A Prototype" as u_dp
@@ -23,14 +27,21 @@ package ToyFactory {
   usecase "Analyze Business" as u_ab
   
 }
-topd --> d
-cl --> u_sp
-topd --> u_dp
-m --> u_rp
-d --> u_pt
+staff -left-|> user
+cl -up-|> user
 
-cl --> u_gf
-cs --> u_gf
+topd --|> d
 
-m --> u_ab
+user -- u_login
+
+cl -- u_sp
+cl -- u_gf
+cs -- u_gf
+
+topd -- u_dp
+
+d -- u_pt
+
+m -- u_rp
+m -- u_ab
 @enduml
