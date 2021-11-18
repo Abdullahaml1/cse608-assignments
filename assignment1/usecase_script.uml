@@ -10,21 +10,22 @@ package Staff as staff{
   actor Designer as d
   actor "Top Designer" as topd
   actor "Customer Service" as cs
+  actor "Bussiness analyst" as ba
 }
 package ToyFactory {
   usecase "Login" as u_login
 
-  usecase "Submit Proposal" as u_sp
+  usecase "Submit proposal" as u_sp
 
-  usecase "Devloping A Prototype" as u_dp
+  usecase "Devloping the proposed prototype" as u_dp
 
-  usecase "Review the Prototype" as u_rp
+  usecase "Review the proposed prototype" as u_rp
 
-  usecase "Proudce  Toys" as u_pt
+  usecase "Proudce  toys" as u_pt
 
-  usecase "Interact and Get Feedback" as u_gf
+  usecase "Interact and get feedback" as u_gf
 
-  usecase "Analyze Business" as u_ab
+  usecase "Analyze business" as u_ab
   
 }
 staff -left-|> user
@@ -43,5 +44,5 @@ topd -- u_dp
 d -- u_pt
 
 m -- u_rp
-m -- u_ab
+ba -- u_ab
 @enduml
