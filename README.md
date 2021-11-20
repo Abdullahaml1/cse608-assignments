@@ -18,5 +18,4 @@ A factory produces kids toys. the process of production depending on **getting a
 
 * **provide neat diagrams and make reasonable assumptions**
 
-
 4. work in a team of two or individuals.
