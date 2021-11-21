@@ -22,17 +22,17 @@ A factory produces kids toys. the process of production depending on **getting a
 
 ## Project State Diagram
 
+
 ```mermaid
 stateDiagram
     [*] --> Proposal
-    Proposal --> Design
-    Design --> DesignReview
-    DesignReview --> DesignRework
-    DesignReview --> ProducePrototype
-    DesignRework --> DesignReview
-    ProducePrototype --> ClientReview
+    Proposal --> PrototypeDevelopment
+    PrototypeDevelopment--> ManagerReview
+    ManagerReview --> PrototypeRework
+    ManagerReview --> ClientReview
+    PrototypeRework --> ManagerReview
     ClientReview --> MassProduction
-    ClientReview --> DesignRework
+    ClientReview --> PrototypeRework
     MassProduction--> [*]
 ```
 
