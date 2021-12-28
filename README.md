@@ -41,10 +41,14 @@ stateDiagram
 
 
 # Assignment 2
-**It is required to build a software application in one of the following domains:
+**It is required to build a software application in one of the following domains:**
 
 ## 3. Virtual Reality Educational Game
-Virtual Reality Educational game based on topics from one course, students have levels and the course is dvided into stages and each student must complete all stages before he proceed to the final stage, the course stages can be edited and updated by course instructors
+* Virtual Reality Educational game based on topics from one course,
+* students have **levels** 
+* The course is divided into stages 
+* Each student must complete all stages before he proceed to the final stage
+* The course stages can be edited and updated by course instructors
 
 ## Team members
 In teams of 1/2/3 create the following
@@ -55,7 +59,7 @@ In teams of 1/2/3 create the following
 2. functional and non functional requirements 
 3. list all stakeholders
 4. use case diagram
-4. provide use case description for at least **two use cases***
+4. provide use case description for at least **two use cases**
 5. create all required development uml models like:
 * class diagram 
 * time sequence diagram 
