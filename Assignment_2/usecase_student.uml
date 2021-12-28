@@ -1,0 +1,46 @@
+@startuml
+left to right direction
+
+actor User as user
+package "Dashborad Users" as dash {
+  actor Student as student
+  actor "Course Instructor" as instructor
+  actor "System Admin" as admin
+}
+
+package EduGame {
+  usecase "Log in" as u_login
+
+
+  usecase "example for student" as u_ex_s
+  usecase "example1 for student" as u_ex1_s
+  usecase "example2 for student" as u_ex2_s
+
+  usecase "example for instructor" as u_ex_i
+  usecase "example1 for instructor" as u_ex1_i
+  usecase "example2 for instructor" as u_ex2_i
+
+
+  usecase "example for admin" as u_ex_a
+  usecase "example1 for admin" as u_ex1_a
+  usecase "example2 for admin" as u_ex2_a
+  
+ 
+}
+
+user <|-up- dash
+
+user -- u_login
+
+student -- u_ex_s
+student -- u_ex1_s
+student -- u_ex2_s
+
+instructor -- u_ex_i
+instructor -- u_ex1_i
+instructor -- u_ex2_i
+
+admin -- u_ex_a
+admin -- u_ex1_a
+admin -- u_ex2_a
+@enduml
