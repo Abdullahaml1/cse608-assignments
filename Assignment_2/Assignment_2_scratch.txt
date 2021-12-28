@@ -1,0 +1,11 @@
+ Main points:
+ =============
+ - VR game software system and dashboard.
+ - Each game achievement adds values to dashboard.
+ - Instructor specifies which parts are put for each student level.
+ - Games types (design, exploratiion, assembly and puzzles).
+ - Each instructor specifies the game type related to his course.
+ - The VR game system is connected to the database that contains details to specific course.
+ - The instructor have pre-defind tasks that each student can achieve.
+ 
+ 
