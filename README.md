@@ -41,6 +41,7 @@ stateDiagram
 
 
 # Assignment 2
+## [Usecases link](http://www.plantuml.com/plantuml/uml/TPA_JiCm48TtFyMfUmPdPYW2X93OAkRgYA-fHHnN_YCL0U-ESmqnbCiK-tVV9P_FsSQ48MKtg84E2PA7OFjZ0cC3TSdwKIdiaW_m4Ya0HiZbgKxOlM5FiBd7U7pr0GtNusOYJCdWGm5S6dSf6nhJL8cNvLBQtFaS8i7J65F8KyGliCksahltcCZ1hN5sP0YdbVfIYyk3oO_eYBzS93kCnU_Pzp0tvFtW-zAYVjVfZEuq41ny-B6ROJhleq1g4TKYsufiMzWrXNhoQc5b2vdM8jwkuMt1LsLumjK39Gy1r2BP2cJBf8Bf5WiVuEQpoQU6Vw0vQPfwR_CWEUFhkKxq_uY7NG--z5eXr6BA8sBlfHd_xlLLmEVQqcYo6xu1)
 **It is required to build a software application in one of the following domains:**
 
 ## 3. Virtual Reality Educational Game
