@@ -12,9 +12,14 @@ package EduGame {
   usecase "Log in" as u_login
 
 
-  usecase "example for student" as u_ex_s
-  usecase "example1 for student" as u_ex1_s
-  usecase "example2 for student" as u_ex2_s
+  usecase "Install the Course's game" as u_icgx_s
+  usecase "View my progress" as u_vmg_s
+  usecase "View course materials" as u_vcs_s
+  usecase "Know my mistaks" as u_kmm_s
+  usecase "Be able to pause and continue the game" as u_pcg_s
+  usecase "Be able to try agin" as u_bata_s 
+
+
 
   usecase "Update game stages" as u_ex_i
   usecase "Monitor results of students" as u_ex1_i
@@ -32,9 +37,13 @@ user <|-up- dash
 
 user -- u_login
 
-student -- u_ex_s
-student -- u_ex1_s
-student -- u_ex2_s
+student -- u_icgx_s
+student -- u_vmg_s
+student -- u_vcs_s
+student --  u_kmm_s
+student -- u_pcg_s
+student -- u_bata_s 
+
 
 instructor -- u_ex_i
 instructor -- u_ex1_i
