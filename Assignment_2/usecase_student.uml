@@ -17,17 +17,14 @@ package EduGame {
   usecase "View course materials" as u_vcs_s
   usecase "Know my mistaks" as u_kmm_s
   usecase "Be able to pause and continue the game" as u_pcg_s
-  usecase "Be able to try agin" as u_bata_s 
+  usecase "Be able to try again" as u_bata_s 
 
+  usecase "Update game stages" as u_ugs_i
+  usecase "Monitor results of students" as u_mros_i
+  usecase "Communicate with students" as u_cws_i
 
-
-  usecase "Update game stages" as u_ex_i
-  usecase "Monitor results of students" as u_ex1_i
-
-
-
-  usecase "Maintain system functionality" as u_ex_a
-  usecase "Handle any error instantly" as u_ex1_a
+  usecase "Maintain system functionality" as u_msf_a
+  usecase "Handle any error instantly" as u_haei_a
 
   
  
@@ -37,6 +34,7 @@ user <|-up- dash
 
 user -- u_login
 
+
 student -- u_icgx_s
 student -- u_vmg_s
 student -- u_vcs_s
@@ -44,11 +42,11 @@ student --  u_kmm_s
 student -- u_pcg_s
 student -- u_bata_s 
 
+instructor -- u_ugs_i
+instructor -- u_mros_i
+instructor -- u_cws_i
 
-instructor -- u_ex_i
-instructor -- u_ex1_i
 
-
-admin -- u_ex_a
-admin -- u_ex1_a
+admin -- u_msf_a
+admin -- u_haei_a
 @enduml
