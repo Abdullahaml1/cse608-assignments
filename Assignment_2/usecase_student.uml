@@ -13,6 +13,7 @@ package EduGame {
 
 
   usecase "Install the Course's game" as u_icgx_s
+  usecase "Play the game" as u_pg_s
   usecase "View my progress" as u_vmg_s
   usecase "View course materials" as u_vcs_s
   usecase "Know my mistaks" as u_kmm_s
@@ -36,6 +37,7 @@ user -- u_login
 
 
 student -- u_icgx_s
+student -- u_pg_s
 student -- u_vmg_s
 student -- u_vcs_s
 student --  u_kmm_s
