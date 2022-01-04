@@ -1,25 +1,25 @@
 ```mermaid
 classDiagram
 
+
 User <|-- Student
 User <|-- Instructor
 User <|-- Admin
 
 
-LoginForm -- Render
+User -- LoginForm
+
+DashboardController -- LoginForm
+DashboardController -- RenderDashboard
+DashboardController -- UserInfo
+DashboardController -- Stage
 
 
-Student -- Render
-Student -- CaptureAction
+CourseMaterials -- Stage
+Assignment -- Stage
+Puzzles -- Stage
 
-LoginForm -- GameController
-Render -- GameController
-CaptureAction -- GameController
-CourseMaterials -- GameController
-Assignment -- GameController
-Puzzles -- GameController
-StudentInfo -- GameController
-
+DataElement <|-- UserInfo
 DataElement <|-- CourseMaterials
 DataElement <|-- Assignment
 DataElement <|-- Puzzles
@@ -29,16 +29,14 @@ UserInfo <|-- StudentInfo
 UserInfo <|-- InstructorInfo
 UserInfo <|-- AdminInfo
 
-DataElement -- Database
 
 
+Database -- DataElement
 
 class User{
 +int age
 +String gender
 +isMammal()
-+mate()
-
 }
 
 class Student{
@@ -61,68 +59,33 @@ class Admin{
 
 
 class LoginForm{
--int sizeInFeet
--canEat()
-}
-
-class Render{
--int sizeInFeet
--canEat()
++String beakColor
++swim()
++quack()
 }
 
 
-class CaptureAction{
+class RenderDashboard{
++String beakColor
++swim()
++quack()
+}
+
+
+
+class DashboardController{
++String beakColor
++swim()
++quack()
+}
+
+
+class UserInfo{
 +int age
 +String gender
 +isMammal()
 +mate()
 }
-
-
-class CaptureAction{
-+int age
-+String gender
-+isMammal()
-+mate()
-}
-
-
-class GameController{
-+int age
-+String gender
-+isMammal()
-+mate()
-}
-
-
-class CourseMaterials{
-+int age
-+String gender
-+isMammal()
-+mate()
-}
-
-class Puzzles{
-+int age
-+String gender
-+isMammal()
-+mate()
-}
-
-class Assignment{
-+int age
-+String gender
-+isMammal()
-+mate()
-}
-
-class DataElement{
-+int age
-+String gender
-+isMammal()
-+mate()
-}
-
 
 class UserInfo{
 +int age
@@ -156,8 +119,28 @@ class AdminInfo{
 }
 
 
+class Stage{
++int age
++String gender
++isMammal()
+}
 
-class Database{
+
+class CourseMaterials{
++int age
++String gender
++isMammal()
++mate()
+}
+
+class Puzzles{
++int age
++String gender
++isMammal()
++mate()
+}
+
+class Assignment{
 +int age
 +String gender
 +isMammal()
@@ -168,6 +151,23 @@ class Database{
 
 
 
+class DataElement{
++int age
++String gender
++isMammal()
++mate()
+}
+
+
+DataElement <|-- CourseMaterials
+DataElement <|-- Assignment
+DataElement <|-- Puzzles
+DataElement <|-- UserInfo
+
+class Database{
++int age
++String gender
++isMammal()
++mate()
+}
 ```
-
-
