@@ -7,12 +7,13 @@ User <|-- Instructor
 User <|-- Admin
 
 
-User -- LoginForm
+User -- View
+
 
 DashboardController -- LoginForm
-DashboardController -- RenderDashboard
 DashboardController -- UserInfo
-DashboardController -- Stage
+DashboardController -- View
+DashboardController -- DataElement
 
 
 CourseMaterials -- Stage
@@ -65,18 +66,18 @@ class LoginForm{
 }
 
 
-class RenderDashboard{
-+String beakColor
-+swim()
-+quack()
+class View{
++int age
++String gender
++isMammal()
 }
+
 
 
 
 class DashboardController{
 +String beakColor
-+swim()
-+quack()
++render()
 }
 
 

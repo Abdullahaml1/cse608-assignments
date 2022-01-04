@@ -6,15 +6,18 @@ User <|-- Instructor
 User <|-- Admin
 
 
-LoginForm -- Render
 
 
-Student -- Render
-Student -- CaptureAction
+Student -- GameView
+Student -- ActionController
+
+
+Instructor -- GameView
+Instructor -- ActionController
 
 LoginForm -- GameController
-Render -- GameController
-CaptureAction -- GameController
+GameView -- GameController
+ActionController -- GameController
 StudentInfo -- GameController
 Stage -- GameController
 
@@ -65,13 +68,13 @@ class LoginForm{
 -canEat()
 }
 
-class Render{
+class GameView{
 -int sizeInFeet
 -canEat()
 }
 
 
-class CaptureAction{
+class ActionController{
 +int age
 +String gender
 +isMammal()
@@ -79,7 +82,7 @@ class CaptureAction{
 }
 
 
-class CaptureAction{
+class ActionController{
 +int age
 +String gender
 +isMammal()
