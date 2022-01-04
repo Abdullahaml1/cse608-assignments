@@ -7,25 +7,26 @@ User <|-- Instructor
 User <|-- Admin
 
 
-User -- View
+User "1"--"1" View
 
-Student -- GameView
-Instructor -- GameView
+Student "1"--"1" GameView
+Instructor "1"--"1" GameView
 
-GameController -- GameView
+GameController "1"--"1" GameView
 
 Controller <|-- GameController
 Controller <|-- DashboardController
 
-DashboardController -- View
-Controller -- LoginForm
-Controller -- DataElement
-GameController -- Stage
+DashboardController "1"--"1" View
+Controller "1"--"1" LoginForm
+Controller "1"--"*" DataElement
+GameController "1"--"*" Course
 
 
-CourseMaterials -- Stage
-Assignment -- Stage
-Puzzles -- Stage
+Course "1"--"*" Stage
+CourseMaterials "*"--"1" Stage
+Assignment "*"--"1" Stage
+Puzzles "*"--"1" Stage
 
 DataElement <|-- UserInfo
 DataElement <|-- CourseMaterials
@@ -39,29 +40,27 @@ UserInfo <|-- AdminInfo
 
 
 
-Database -- DataElement
+Database "1"--"*" DataElement
 
 class User{
-+int age
-+String gender
-+isMammal()
+#int id
+#String name
+#String gender
 }
 
 class Student{
-+String beakColor
-+swim()
-+quack()
++int stage
++int level
 }
 
 class Instructor{
-+String beakColor
-+swim()
-+quack()
++String course
 }
 
 class Admin{
--int sizeInFeet
--canEat()
++int active_ticket_id
++manage()
++authenticate()
 }
 
 
@@ -127,6 +126,12 @@ class AdminInfo{
 +String gender
 +isMammal()
 +mate()
+}
+
+class Course{
++String course_code
++String Name
++int intructor_code
 }
 
 
