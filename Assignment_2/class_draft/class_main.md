@@ -14,25 +14,33 @@ Instructor "1"--"1" GameView
 
 GameController "1"--"1" GameView
 
-Controller <|-- GameController
 Controller <|-- DashboardController
+Controller <|-- GameController
 
 DashboardController "1"--"1" View
 Controller "1"--"1" LoginForm
-Controller "1"--"*" DataElement
-GameController "1"--"*" Course
+Controller "1"--"*" ServerController
 
+
+ServerController -- DataElementPool
+DataElementPool *-- DataElement
 
 Course "1"--"*" Stage
 CourseMaterials "*"--"1" Stage
 Assignment "*"--"1" Stage
 Puzzles "*"--"1" Stage
 
+CoursePool *-- Course
+
+DataElementPool <|-- CoursePool
+DataElementPool <|-- UserInfoPool
+
 DataElement <|-- UserInfo
 DataElement <|-- CourseMaterials
 DataElement <|-- Assignment
 DataElement <|-- Puzzles
 DataElement <|-- UserInfo
+DataElement <|-- Course
 
 UserInfo <|-- StudentInfo
 UserInfo <|-- InstructorInfo
@@ -41,6 +49,7 @@ UserInfo <|-- AdminInfo
 
 
 Database "1"--"*" DataElement
+Database "1"--"*" DataElementPool
 
 class User{
 #int id
@@ -90,7 +99,8 @@ class GameController{
 +capture_action()
 }
 
-class UserInfo{
+
+class ServerController{
 +int age
 +String gender
 +isMammal()
@@ -98,6 +108,13 @@ class UserInfo{
 }
 
 class UserInfo{
++int age
++String gender
++isMammal()
++mate()
+}
+
+class UserInfoPool{
 +int age
 +String gender
 +isMammal()
@@ -128,12 +145,21 @@ class AdminInfo{
 +mate()
 }
 
+
+
 class Course{
 +String course_code
 +String Name
 +int intructor_code
 }
 
+
+class CoursePool{
++int age
++String gender
++isMammal()
++mate()
+}
 
 class Stage{
 +int age
@@ -166,7 +192,6 @@ class Assignment{
 
 
 
-
 class DataElement{
 +int age
 +String gender
@@ -175,10 +200,14 @@ class DataElement{
 }
 
 
-DataElement <|-- CourseMaterials
-DataElement <|-- Assignment
-DataElement <|-- Puzzles
-DataElement <|-- UserInfo
+class DataElementPool{
++int age
++String gender
++isMammal()
++mate()
+}
+
+
 
 class Database{
 +int age
