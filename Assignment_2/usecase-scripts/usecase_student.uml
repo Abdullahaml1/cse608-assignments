@@ -16,9 +16,8 @@ package EduGame {
   usecase "Play the game" as u_pg_s
   usecase "View my progress" as u_vmg_s
   usecase "View course materials" as u_vcs_s
-  usecase "Know my mistaks" as u_kmm_s
+  usecase "Know my mistakes" as u_kmm_s
   usecase "Be able to pause and continue the game" as u_pcg_s
-  usecase "Be able to try again" as u_bata_s 
 
   usecase "Update game stages" as u_ugs_i
   usecase "Monitor results of students" as u_mros_i
@@ -42,7 +41,7 @@ student -- u_vmg_s
 student -- u_vcs_s
 student --  u_kmm_s
 student -- u_pcg_s
-student -- u_bata_s 
+
 
 instructor -- u_ugs_i
 instructor -- u_mros_i
