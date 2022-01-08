@@ -38,9 +38,9 @@ DataElement <|-- Puzzles
 DataElement <|-- UserInfo
 
 class User{
-#int id
-#String name
-#String gender
++int id
++String name
++String type
 }
 
 class Student{
@@ -58,26 +58,18 @@ class Admin{
 +authenticate()
 }
 
-
-
 class LoginForm{
 +String beakColor
-+swim()
-+quack()
++login()
++forgotPassword()
 }
 
 
 class View{
-+int age
-
-
+ 
 }
 
-
-
-
 class DashboardController{
-+String beakColor
 +render()
 }
 
@@ -87,31 +79,16 @@ class GameController{
 
 class UserInfo{
 +int age
-
-
-
 }
-
-class UserInfo{
-+int age
-
-
-
-}
-
 
 class StudentInfo{
 +int age
-
-
 
 }
 
 
 class InstructorInfo{
 +int age
-
-
 
 }
 
@@ -154,8 +131,6 @@ class DataElement{
 +getName()
 }
 
-
-
 class Database{
-+int age
+ 
 }
