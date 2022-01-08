@@ -1,4 +1,3 @@
-```mermaid
 classDiagram
 
 
@@ -28,19 +27,15 @@ CourseMaterials "*"--"1" Stage
 Assignment "*"--"1" Stage
 Puzzles "*"--"1" Stage
 
-DataElement <|-- UserInfo
-DataElement <|-- CourseMaterials
-DataElement <|-- Assignment
-DataElement <|-- Puzzles
-DataElement <|-- UserInfo
-
 UserInfo <|-- StudentInfo
 UserInfo <|-- InstructorInfo
 UserInfo <|-- AdminInfo
 
-
-
 Database "1"--"*" DataElement
+DataElement <|-- CourseMaterials
+DataElement <|-- Assignment
+DataElement <|-- Puzzles
+DataElement <|-- UserInfo
 
 class User{
 #int id
@@ -74,8 +69,8 @@ class LoginForm{
 
 class View{
 +int age
-+String gender
-+isMammal()
+
+
 }
 
 
@@ -92,40 +87,40 @@ class GameController{
 
 class UserInfo{
 +int age
-+String gender
-+isMammal()
-+mate()
+
+
+
 }
 
 class UserInfo{
 +int age
-+String gender
-+isMammal()
-+mate()
+
+
+
 }
 
 
 class StudentInfo{
 +int age
-+String gender
-+isMammal()
-+mate()
+
+
+
 }
 
 
 class InstructorInfo{
 +int age
-+String gender
-+isMammal()
-+mate()
+
+
+
 }
 
 
 class AdminInfo{
 +int age
-+String gender
-+isMammal()
-+mate()
+
+
+
 }
 
 class Course{
@@ -136,54 +131,31 @@ class Course{
 
 
 class Stage{
-+int age
-+String gender
-+isMammal()
+ 
 }
 
 
 class CourseMaterials{
-+int age
-+String gender
-+isMammal()
-+mate()
+ 
 }
 
 class Puzzles{
-+int age
-+String gender
-+isMammal()
-+mate()
+ 
 }
 
 class Assignment{
-+int age
-+String gender
-+isMammal()
-+mate()
+ 
 }
-
-
-
-
 
 class DataElement{
-+int age
-+String gender
-+isMammal()
-+mate()
++studentID
++instructorID
++getID()
++getName()
 }
 
 
-DataElement <|-- CourseMaterials
-DataElement <|-- Assignment
-DataElement <|-- Puzzles
-DataElement <|-- UserInfo
 
 class Database{
 +int age
-+String gender
-+isMammal()
-+mate()
 }
-```
