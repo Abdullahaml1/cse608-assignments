@@ -1,10 +1,8 @@
 classDiagram
 
-
 User <|-- Student
 User <|-- Instructor
 User <|-- Admin
-
 
 User "1"--"1" View
 
@@ -20,7 +18,6 @@ DashboardController "1"--"1" View
 Controller "1"--"1" LoginForm
 Controller "1"--"*" DataElement
 GameController "1"--"*" Course
-
 
 Course "1"--"*" Stage
 CourseMaterials "*"--"1" Stage
@@ -46,10 +43,15 @@ class User{
 class Student{
 +int stage
 +int level
++startNewGame()
++continueFromlastCheckpoint()
 }
 
 class Instructor{
 +String course
++sendMessageToStudent()
++approveYearMarks()
++editCourseContent()
 }
 
 class Admin{
@@ -59,22 +61,26 @@ class Admin{
 }
 
 class LoginForm{
-+String beakColor
++String enteredID
++String enteredPassword
 +login()
 +forgotPassword()
 }
 
-
 class View{
- 
++String cssStyle
++String HTMLForm
++sendCredendtialsToController()
 }
 
 class DashboardController{
++validateData()
 +render()
 }
 
 class GameController{
 +capture_action()
++loadFigures()
 }
 
 class UserInfo{
@@ -83,21 +89,16 @@ class UserInfo{
 
 class StudentInfo{
 +int age
-
 }
 
 
 class InstructorInfo{
 +int age
-
 }
 
 
 class AdminInfo{
 +int age
-
-
-
 }
 
 class Course{
@@ -132,5 +133,12 @@ class DataElement{
 }
 
 class Database{
- 
++table StudentsTakingCourse
++table instructors
++table courseContent
+}
+
+class GameView{
++String usertype    
++displayFigures()
 }
