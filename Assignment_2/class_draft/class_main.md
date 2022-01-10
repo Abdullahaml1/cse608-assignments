@@ -40,7 +40,7 @@ class User{
 class Student{
 +int stage
 +int level
-+startNewGame()
++startStartGame()
 +continueFromlastCheckpoint()
 }
 
@@ -76,6 +76,16 @@ class DashboardController{
 }
 
 class GameController{
++course_object
++stage_object
++stageMaterials_object
++puzzle_object
++getStageObject()
++getStageMaterialObject()
++getPuzzleObject()
++startGame()
++pause()
++solvePuzzle(answer)
 +capture_action()
 +loadFigures()
 }
@@ -86,6 +96,10 @@ class UserInfo{
 
 class StudentInfo{
 +int age
++getCourseCode()
++updatScore(puzzle_id, score)
++MultipyScoreByDecayingFactor(puzzle_id)
++nextStage()
 }
 
 
@@ -99,39 +113,60 @@ class AdminInfo{
 }
 
 class Course{
-+String course_code
-+String Name
-+int intructor_code
++course_code
++Name
++stage_object
++stageMaterials_object
++puzzle_object
++createStageObject(stage_id)
++createPuzzleObject(puzzle_id)
++createStageMaterials_object(m_id)
++intructor_code
++getStageobject(stage_id)
 }
 
 
 class Stage{
- 
++puzzleObject
++stageMaterialsObject
++getPuzzleObject()
++getStageMaterialObject()
 }
 
 
 class StageMaterial{
-+String courseContent
++courseContent
 }
 
 class Puzzles{
- 
+isCorrect(answer) 
 }
 
 
 class DataElement{
-+int objectID
++objectID
 +getID()
 +getName()
++getOject(ObjectType, code)
++delete()
 }
 
 class Database{
 +table StudentsTakingCourse
 +table instructors
++getDataElementObject(ObjectType, object_id)
++store(altered_data)
 
 }
 
 class GameView{
-+String usertype    
++stageObject
++stageMaterialsObject
++PuzzleObject
 +displayFigures()
++render(ViewType)
++maneuverGame()
++startPuzzle()
++restartStage()
++pause()
 }

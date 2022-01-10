@@ -2,83 +2,107 @@
 autonumber
 
 ' ###### initilaization of the model ########
+== Game Initialization ==
 
-":GamePlayer"  ->  ":GameView" ++: startGame()
+":Student"  ->  ":GameView" ++: startGame()
 ":GameView" -> ":GameController"++: startGame()
 
 
-":GameController" -> ":GamePlayerInfo"++: getCourseCode()
-":GamePlayerInfo" --> ":GameController"--: course_code
+":GameController" -> ":StudentInfo"++: getCourseCode()
+":StudentInfo" --> ":GameController"--: course_code
 
 
 ":GameController" -> ":DataElement"++: getObject(ObjectType='course', course_code)
 ":DataElement" -> ":Database"++: getDataEelment(name='course', course_code)
 ":Database" --> ":DataElement"--: course_object
-":DataElement" -> ":Course" **: createObject(type='course')
 ":DataElement" --> ":GameController"--: course_object
 
+'######## Stage Playing ##############
+loop proceeding Stages
+== Stage playing ==
 
-":GameController" -> ":Course"++: getStageObject()
-":Course" -> ":Database"++: getDataElementObject(name='stage', [course_code,stage_code])
+":GameController" -> ":Course"++: getStageObject(stage_id)
+":Course" -> ":Database"++: getDataElementObject(ObjectType='stage', [course_code,stage_id])
 ":Database" --> ":Course"--: stage_object
 
 ' ##### creating new object (**) means create new #######
-":Course" --> ":Stage" **: createStageObject()
+":Course" --> ":Stage" **: createStageObject(stage_id)
 
 ":Course" --> ":GameController"--: stage_object
 
-":GameController" --> ":GameView"--: begin_view_data
+":GameController" --> ":GameView"--: render(stage_object)
 
-":GameView" --> ":GamePlayer"--: game begins
+":GameView" --> ":Student"--: game begins
 
 
 ' ##### playing a stage #######
 
-'       ####### Course materials ######
-":GamePlayer" -> ":GameView" ++: maneuverGame()
-":GameView" -> ":GameController" ++: getCourseMaterialObject()
-":Stage" --> ":GameController"--: course_material_object
-":GameController" --> ":GameView"--: course_material_boject
-":GameView" --> ":GamePlayer"--: game maneuvering rendered
 
+loop Proceeding Stage
+'       ####### Course materials ######
+":Student" -> ":GameView" ++: maneuverGame()
+":GameView" -> ":GameController" ++: getStageMaterialObject()
+":GameController" -> ":Stage" ++:getStageMaterialsObject()
+":Stage" -> ":StageMaterials" **: createStageMaterials() 
+":Stage" --> ":GameController"--: stage_material_object
+":GameController" --> ":GameView"--: course_material_boject
+":GameView" --> ":Student"--: game maneuvering rendered
 
 
 '       ###### puzzle #######
-":GamePlayer" -> ":GameView" ++: start_puzzle()
+":Student" -> ":GameView" ++: start_puzzle()
 ":GameView" -> ":GameController" ++: getPuzzleObject()
+":GameController" -> ":Stage"++: getPuzzleObject()
+":Stage" -> ":Puzzle" ** :createPuzzleObject()
 ":Stage" --> ":GameController"--: puzzle_object
 ":GameController" --> ":GameView"--: puzzle_object
-":GameView" --> ":GamePlayer"--: puzzle rendered
+":GameView" --> ":Student"--: puzzle rendered
 
 '             ###### solving puzzle ########
 loop 3 trials solving puzzle
-":GamePlayer" -> ":GameView" ++: solvePuzzle(answer)
+":Student" -> ":GameView" ++: solvePuzzle(answer)
 ":GameView" -> ":GameController" ++: solvePuzzle(answer)
 ":GameController" -> ":Puzzle" ++: isCorrect(answer)
-alt solution is correct
+alt solution is correct (exit loop)
     ":Puzzle" --> ":GameController" --: yes
-    ":GameController" -> ":GamePlayerInfo":UpdateScore(puzzle_id)
-    ":GamePlayerInfo" -> ":Database" :store(altered_data)
+    ":GameController" -> ":StudentInfo":UpdateScore(puzzle_id, score)
+    ":StudentInfo" -> ":Database" :store(altered_data)
 else try agin 
     ":Puzzle" --> ":GameController" --: no
     ":GameController" --> ":GameView" --: render(puzzle_object)
-    ":GameView" --> ":GamePlayer"--: puzzle rendered
+    ":GameView" --> ":Student"--: puzzle rendered
     
 end
 
 '       ###### Failed 3 times in puzzle #####
 group failed 3 times
-   ":GameController" -> ":GamePlayerInfo":MultipyScoreByDecayingFactor(puzzle_id)
-   ":GamePlayer" -> ":Database" :store(altered_data)
+   ":GameController" -> ":StudentInfo":MultipyScoreByDecayingFactor(puzzle_id)
+   ":StudentInfo" -> ":Database" :store(altered_data)
    ":GameController" --> ":GameView" :restartStage()
-   ":GameView" --> ":GamePlayer": game restarted
+   ":GameView" --> ":Student": game restarted
+end
+end
 end
 
 
+' ###### Finish All course materials 
+group complete the stage
+    ":GameController" -> ":StudentInfo":nextStage()
+    ":StudentInfo" -> ":Database" :store(altered_data)
+    ' ######### deleteing objects ######
+    ":GameController" -> ":StageMaterials" !!: delete()
+    ":GameController" -> ":Puzzle" !!: delete()
+    ":GameController" -> ":Stage" !!: delete()
 
-":GameController" -> ":Stage"++: getAssignments()
-":Stage" --> ":GameController"--: assignment_object
+end
+end
 
-":GameController" -> ":Stage"++: getPuzzle()
-":Stage" --> ":GameController" --: puzzle_object
+
+' ###### pause the game #######
+== Pause the game ==
+":Student" -> ":GameView" : pause()
+":GameView" -> ":GameController"++: pause()
+":GameController" -> ":StudentInfo": store(altered_data)
+":GameController" --> ":GameView" -- : render(pause)
+":GameView" --> ":Student": game paused
 @enduml
