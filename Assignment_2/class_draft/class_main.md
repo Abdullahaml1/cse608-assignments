@@ -20,7 +20,6 @@ DataElement <|-- Course
 
 Course "1"--"*" Stage
 CourseMaterials "*"--"1" Stage
-Assignment "*"--"1" Stage
 Puzzles "*"--"1" Stage
 
 UserInfo <|-- StudentInfo
@@ -29,7 +28,6 @@ UserInfo <|-- AdminInfo
 
 Database "1"--"*" DataElement
 DataElement <|-- CourseMaterials
-DataElement <|-- Assignment
 DataElement <|-- Puzzles
 DataElement <|-- UserInfo
 
@@ -120,9 +118,6 @@ class Puzzles{
  
 }
 
-class Assignment{
- 
-}
 
 class DataElement{
 +int objectID
@@ -140,4 +135,3 @@ class GameView{
 +String usertype    
 +displayFigures()
 }
-
