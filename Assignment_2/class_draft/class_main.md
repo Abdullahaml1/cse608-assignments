@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
 
 User <|-- Student
@@ -19,10 +20,10 @@ Controller "1"--"1" LoginForm
 Controller "1"--"*" DataElement
 GameController "1"--"*" Course
 
-Course "1"--"*" Stage
-CourseMaterials "*"--"1" Stage
-Assignment "*"--"1" Stage
-Puzzles "*"--"1" Stage
+Course "1"*--"*" Stage
+CourseMaterials "*"--o"1" Stage
+Assignment "*"--o"1" Stage
+Puzzles "*"--o"1" Stage
 
 UserInfo <|-- StudentInfo
 UserInfo <|-- InstructorInfo
@@ -142,3 +143,5 @@ class GameView{
 +String usertype    
 +displayFigures()
 }
+
+```
