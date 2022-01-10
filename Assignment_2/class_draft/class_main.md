@@ -114,7 +114,7 @@ class Stage{
 
 
 class CourseMaterials{
- 
++String courseContent
 }
 
 class Puzzles{
@@ -135,7 +135,7 @@ class DataElement{
 class Database{
 +table StudentsTakingCourse
 +table instructors
-+table courseContent
+
 }
 
 class GameView{
