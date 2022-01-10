@@ -19,7 +19,7 @@ Controller "1"--"*" DataElement
 DataElement <|-- Course
 
 Course "1"--"*" Stage
-CourseMaterials "*"--"1" Stage
+StageMaterial "*"--"1" Stage
 Puzzles "*"--"1" Stage
 
 UserInfo <|-- StudentInfo
@@ -27,7 +27,7 @@ UserInfo <|-- InstructorInfo
 UserInfo <|-- AdminInfo
 
 Database "1"--"*" DataElement
-DataElement <|-- CourseMaterials
+DataElement <|-- StageMaterial
 DataElement <|-- Puzzles
 DataElement <|-- UserInfo
 
@@ -110,7 +110,7 @@ class Stage{
 }
 
 
-class CourseMaterials{
+class StageMaterial{
 +String courseContent
 }
 
