@@ -1,4 +1,3 @@
-```mermaid
 classDiagram
 
 User <|-- Student
@@ -8,7 +7,6 @@ User <|-- Admin
 User "1"--"1" View
 
 Student "1"--"1" GameView
-Instructor "1"--"1" GameView
 
 GameController "1"--"1" GameView
 
@@ -18,12 +16,12 @@ Controller <|-- DashboardController
 DashboardController "1"--"1" View
 Controller "1"--"1" LoginForm
 Controller "1"--"*" DataElement
-GameController "1"--"*" Course
+DataElement <|-- Course
 
-Course "1"*--"*" Stage
-CourseMaterials "*"--o"1" Stage
-Assignment "*"--o"1" Stage
-Puzzles "*"--o"1" Stage
+Course "1"--"*" Stage
+CourseMaterials "*"--"1" Stage
+Assignment "*"--"1" Stage
+Puzzles "*"--"1" Stage
 
 UserInfo <|-- StudentInfo
 UserInfo <|-- InstructorInfo
@@ -127,8 +125,7 @@ class Assignment{
 }
 
 class DataElement{
-+studentID
-+instructorID
++int objectID
 +getID()
 +getName()
 }
@@ -144,4 +141,3 @@ class GameView{
 +displayFigures()
 }
 
-```
