@@ -38,21 +38,21 @@ class User{
 }
 
 class Student{
-+int stage
-+int level
 +startStartGame()
 +continueFromlastCheckpoint()
++preveiwCurrentState()
++preveiwCurrentLevel()
 }
 
 class Instructor{
-+String course
 +sendMessageToStudent()
 +approveYearMarks()
 +editCourseContent()
++showActiveCourse()
 }
 
 class Admin{
-+int active_ticket_id
++displayActiveticketID()
 +manage()
 +authenticate()
 }
@@ -76,10 +76,10 @@ class DashboardController{
 }
 
 class GameController{
-+course_object
-+stage_object
-+stageMaterials_object
-+puzzle_object
++course
++stage
++stageMaterials
++puzzle
 +getStageObject()
 +getStageMaterialObject()
 +getPuzzleObject()
@@ -91,11 +91,12 @@ class GameController{
 }
 
 class UserInfo{
-+int age
++int ID
 }
 
 class StudentInfo{
-+int age
++int stage
++int level
 +getCourseCode()
 +updatScore(puzzle_id, score)
 +MultipyScoreByDecayingFactor(puzzle_id)
@@ -104,20 +105,20 @@ class StudentInfo{
 
 
 class InstructorInfo{
-+int age
++int activeCourse
 }
 
 
 class AdminInfo{
-+int age
++int activeTicketID
 }
 
 class Course{
 +course_code
 +Name
-+stage_object
-+stageMaterials_object
-+puzzle_object
++stage
++stageMaterials
++puzzle
 +createStageObject(stage_id)
 +createPuzzleObject(puzzle_id)
 +createStageMaterials_object(m_id)
@@ -147,7 +148,7 @@ class DataElement{
 +objectID
 +getID()
 +getName()
-+getOject(ObjectType, code)
++getObject(ObjectType, code)
 +delete()
 }
 
@@ -160,9 +161,9 @@ class Database{
 }
 
 class GameView{
-+stageObject
-+stageMaterialsObject
-+PuzzleObject
++stage
++stageMaterials
++Puzzle
 +displayFigures()
 +render(ViewType)
 +maneuverGame()
