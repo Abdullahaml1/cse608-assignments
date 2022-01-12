@@ -22,7 +22,7 @@ autonumber
 == Instructor Editing Course ==
 ":instructor" -> ":DashboardView"++: [loggedIn] editCourseMaterial() 
 ":DashboardView" -> ":InstructorDashboardController"++: editCourseContent() 
-loop Instructo modifications
+loop#Gold #lightblue Instructor modifications
 ' ####### add stage ####### 
 ":InstructorDashboardController" -> ":Course"++: addStage()
 ":Course" -> ":Stage"**: createStage()
