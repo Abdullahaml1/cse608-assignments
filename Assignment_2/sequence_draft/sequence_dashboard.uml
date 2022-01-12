@@ -4,10 +4,9 @@ autonumber
 ' ###### initilaization of the model ########
 
 == Login ==
-":instructor"  ->  ":Loginfrom" ++: sendLoginCredentials()
-":Loginfrom" -> ":DashboardView"++: login()
-":DashboardView" -> ":DashboardController"++: sendCredentialsToController()
-":DashboardController" -> ":Instructorinfo"++: validateData()
+":instructor"  ->  ":Loginform" ++: sendLoginCredentials()
+":Loginform" -> ":LoginController"++: login()
+":LoginController" -> ":Instructorinfo"++: validateData()
 ":Instructorinfo" -> ":UserInfo"++: getInstructorCredentials()
 ":UserInfo" -> ":DataElement"++: getCredentials()
 ":DataElement" -> ":Database"++: getName()
@@ -16,8 +15,28 @@ autonumber
 ":Database" --> ":DataElement"--: password
 ":DataElement" --> ":UserInfo"--: Name,password
 ":UserInfo" --> ":Instructorinfo"--: instructorName,instructorPassword
-":Instructorinfo" --> ":DashboardController"--: instructorName,instructorPassword
-":DashboardController" --> ":DashboardView"--: validated
+":Instructorinfo" --> ":LoginController"--: instructorName,instructorPassword
+":LoginController" --> ":Loginform"--: validated
+":Loginform" --> ":instructor"--: loggedIn
 
-== Navigation ==
+== Instructor Editing Course ==
+":instructor" -> ":DashboardView"++: [loggedIn] editCourseMaterial() 
+":DashboardView" -> ":InstructorDashboardController"++: editCourseContent() 
+loop Instructo modifications
+' ####### add stage ####### 
+":InstructorDashboardController" -> ":Course"++: addStage()
+":Course" -> ":Stage"**: createStage()
+":Course" --> ":InstructorDashboardController"--: stageObject[object created]
+
+":InstructorDashboardController" -> ":Course"++: deleteStage()
+":Course" -> ":Stage"!!: deleteStageObject()
+":Course" --> ":InstructorDashboardController"--: deletedStage[object deleted]
+
+":InstructorDashboardController" -> ":StageMaterial"++: editStageMaterial(stageObject)
+":StageMaterial" --> ":InstructorDashboardController"--: updatedStageData
+end
+
+":InstructorDashboardController" --> ":DashboardView"--: ModifiedContent 
+":DashboardView" --> ":instructor"--: Modifications saved 
+
 @enduml

@@ -13,3 +13,6 @@
  - The veiw section shouldn't have any data that is related to the database. Instead, it should have methods to fetch such data.
  - The attributes of each class are assigned to each object. So, there is no need to add _object in their name. :P 
  - login form should be attached to the veiw no the controller.
+ - The userInfo class determines which method shall fetch from database.
+ - Student and instructor can't have the same dashboard controller.
+ 

@@ -4,7 +4,7 @@ User <|-- Student
 User <|-- Instructor
 User <|-- Admin
 
-LoginForm "1"--"1" DashboardView
+User "1"--"1" DashboardView
 DashboardController "1"--"1" DashboardView
 
 Student "1"--"1" GameView
@@ -13,9 +13,10 @@ GameController "1"--"1" GameView
 
 Controller <|-- GameController
 Controller <|-- DashboardController
-
+Controller <|-- LoginController
 
 User "1"--"1" LoginForm
+LoginForm "1"--"1" LoginController 
 Controller "1"--"*" DataElement
 DataElement <|-- Course
 
@@ -32,11 +33,13 @@ DataElement <|-- StageMaterial
 DataElement <|-- Puzzles
 DataElement <|-- UserInfo
 
+DashboardController <|-- StudentDashboardController
+DashboardController <|-- InstructorDashboardController
+
 class User{
 +getUserID()
 +getUserName()
 +getUserType()
-+sendLoginCredentials()
 }
 
 class Student{
@@ -69,13 +72,15 @@ class LoginForm{
 class DashboardView{
 +String cssStyle
 +String HTMLForm
-+sendCredendtialsToController()
 +navigate()
 }
 
 class DashboardController{
-+validateData()
 +render()
+}
+
+class LoginController{
+    +validateData()
 }
 
 class GameController{
@@ -141,7 +146,7 @@ class Stage{
 
 
 class StageMaterial{
-+courseContent
++stageData
 }
 
 class Puzzles{
@@ -175,4 +180,18 @@ class GameView{
 +startPuzzle()
 +restartStage()
 +pause()
+}
+
+class StudentDashboardController{
+    +getCurrentStage()
+    +getYearMarks()
+    +sendMessageToInstructor()
+}
+
+
+class InstructorDashboardController{
+    +addStage()
+    +deleteStage()
+    +ModifyStage()
+    +sendMessageToStudent()
 }
