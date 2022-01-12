@@ -3,82 +3,21 @@ autonumber
 
 ' ###### initilaization of the model ########
 
-":GamePlayer"  ->  ":GameView" ++: startGame()
-":GameView" -> ":GameController"++: startGame()
+== Login ==
+":instructor"  ->  ":Loginfrom" ++: sendLoginCredentials()
+":Loginfrom" -> ":DashboardView"++: login()
+":DashboardView" -> ":DashboardController"++: sendCredentialsToController()
+":DashboardController" -> ":Instructorinfo"++: validateData()
+":Instructorinfo" -> ":UserInfo"++: getInstructorCredentials()
+":UserInfo" -> ":DataElement"++: getCredentials()
+":DataElement" -> ":Database"++: getName()
+":Database" --> ":DataElement"--: Name
+":DataElement" -> ":Database"++: getpassword()
+":Database" --> ":DataElement"--: password
+":DataElement" --> ":UserInfo"--: Name,password
+":UserInfo" --> ":Instructorinfo"--: instructorName,instructorPassword
+":Instructorinfo" --> ":DashboardController"--: instructorName,instructorPassword
+":DashboardController" --> ":DashboardView"--: validated
 
-
-":GameController" -> ":GamePlayerInfo"++: getCourseCode()
-":GamePlayerInfo" --> ":GameController"--: course_code
-
-
-":GameController" -> ":DataElement"++: getObject(ObjectType='course', course_code)
-":DataElement" -> ":Database"++: getDataEelment(name='course', course_code)
-":Database" --> ":DataElement"--: course_object
-":DataElement" -> ":Course" **: createObject(type='course')
-":DataElement" --> ":GameController"--: course_object
-
-
-":GameController" -> ":Course"++: getStageObject()
-":Course" -> ":Database"++: getDataElementObject(name='stage', [course_code,stage_code])
-":Database" --> ":Course"--: stage_object
-
-' ##### creating new object (**) means create new #######
-":Course" --> ":Stage" **: createStageObject()
-
-":Course" --> ":GameController"--: stage_object
-
-":GameController" --> ":GameView"--: begin_view_data
-
-":GameView" --> ":GamePlayer"--: game begins
-
-
-' ##### playing a stage #######
-
-'       ####### Course materials ######
-":GamePlayer" -> ":GameView" ++: maneuverGame()
-":GameView" -> ":GameController" ++: getCourseMaterialObject()
-":Stage" --> ":GameController"--: course_material_object
-":GameController" --> ":GameView"--: course_material_boject
-":GameView" --> ":GamePlayer"--: game maneuvering rendered
-
-
-
-'       ###### puzzle #######
-":GamePlayer" -> ":GameView" ++: start_puzzle()
-":GameView" -> ":GameController" ++: getPuzzleObject()
-":Stage" --> ":GameController"--: puzzle_object
-":GameController" --> ":GameView"--: puzzle_object
-":GameView" --> ":GamePlayer"--: puzzle rendered
-
-'             ###### solving puzzle ########
-loop 3 trials solving puzzle
-":GamePlayer" -> ":GameView" ++: solvePuzzle(answer)
-":GameView" -> ":GameController" ++: solvePuzzle(answer)
-":GameController" -> ":Puzzle" ++: isCorrect(answer)
-alt solution is correct
-    ":Puzzle" --> ":GameController" --: yes
-    ":GameController" -> ":GamePlayerInfo":UpdateScore(puzzle_id)
-    ":GamePlayerInfo" -> ":Database" :store(altered_data)
-else try agin 
-    ":Puzzle" --> ":GameController" --: no
-    ":GameController" --> ":GameView" --: render(puzzle_object)
-    ":GameView" --> ":GamePlayer"--: puzzle rendered
-    
-end
-
-'       ###### Failed 3 times in puzzle #####
-group failed 3 times
-   ":GameController" -> ":GamePlayerInfo":MultipyScoreByDecayingFactor(puzzle_id)
-   ":GamePlayer" -> ":Database" :store(altered_data)
-   ":GameController" --> ":GameView" :restartStage()
-   ":GameView" --> ":GamePlayer": game restarted
-end
-
-
-
-":GameController" -> ":Stage"++: getAssignments()
-":Stage" --> ":GameController"--: assignment_object
-
-":GameController" -> ":Stage"++: getPuzzle()
-":Stage" --> ":GameController" --: puzzle_object
+== Navigation ==
 @enduml

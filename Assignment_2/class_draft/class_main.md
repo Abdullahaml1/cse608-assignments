@@ -4,7 +4,8 @@ User <|-- Student
 User <|-- Instructor
 User <|-- Admin
 
-User "1"--"1" View
+LoginForm "1"--"1" DashboardView
+DashboardController "1"--"1" DashboardView
 
 Student "1"--"1" GameView
 
@@ -13,8 +14,8 @@ GameController "1"--"1" GameView
 Controller <|-- GameController
 Controller <|-- DashboardController
 
-DashboardController "1"--"1" View
-Controller "1"--"1" LoginForm
+
+User "1"--"1" LoginForm
 Controller "1"--"*" DataElement
 DataElement <|-- Course
 
@@ -32,9 +33,10 @@ DataElement <|-- Puzzles
 DataElement <|-- UserInfo
 
 class User{
-+int id
-+String name
-+String type
++getUserID()
++getUserName()
++getUserType()
++sendLoginCredentials()
 }
 
 class Student{
@@ -64,10 +66,11 @@ class LoginForm{
 +forgotPassword()
 }
 
-class View{
+class DashboardView{
 +String cssStyle
 +String HTMLForm
 +sendCredendtialsToController()
++navigate()
 }
 
 class DashboardController{
@@ -92,6 +95,8 @@ class GameController{
 
 class UserInfo{
 +int ID
++String name
++String type
 }
 
 class StudentInfo{
