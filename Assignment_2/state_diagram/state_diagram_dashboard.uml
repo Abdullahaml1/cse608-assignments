@@ -1,0 +1,17 @@
+@startuml
+[*] --> Login
+Login --> Login :login_failed
+Login --> EditCourseContent :[verified instructor]
+state EditCourseContent{
+    [*] -> AddStage: add_new_stage
+    [*] --> EditCourse: edit_current_course
+    [*] -left-> DeleteCourse: delete_current_course
+    DeleteCourse -left-> RemoveItemFromDatabase: [valid_item]
+    RemoveItemFromDatabase --> InformRelatedstudents: [deleted_successfully]
+
+    EditCourse --> ModifyContent
+    ModifyContent --> InformRelatedstudents
+
+}
+EditCourseContent --> [*]
+@enduml
