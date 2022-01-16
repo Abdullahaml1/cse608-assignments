@@ -1,0 +1,25 @@
+@startuml
+[*] --> Active
+
+Active --> StagePlaying: Press Start Game
+
+
+
+state StagePlaying {
+
+[*] --> GameStageStart
+GameStageStart --> PlayingWithStageMaterials: interacting with the game
+
+PlayingWithStageMaterials --> BeginPuzzle: student reaches puzzle
+
+BeginPuzzle --> SolvingPuzzle: answer the puzzle
+SolvingPuzzle --> SolvingPuzzle: wrong answer
+SolvingPuzzle --> PlayingWithStageMaterials: answer puzzle correctly
+SolvingPuzzle --> GameStageStart: exeeds trials
+SolvingPuzzle --> FinishStage: passing all puzzles
+FinishStage -->GameStageStart: new stage
+}
+StagePlaying --> Active: pause the game
+
+StagePlaying --> CompleteGame: complete stages
+@enduml
