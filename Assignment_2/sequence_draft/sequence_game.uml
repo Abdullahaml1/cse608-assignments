@@ -16,6 +16,7 @@ autonumber
 ":GameController" -> ":DataElement"++: getObject(ObjectType='course', course_code)
 ":DataElement" -> ":Database"++: getDataEelment(name='course', course_code)
 ":Database" --> ":DataElement"--: course_object
+":DateElement" --> ":Course" **: create_object(type='course') 
 ":DataElement" --> ":GameController"--: course_object
 
 '######## Stage Playing ##############
