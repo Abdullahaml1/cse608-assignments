@@ -1,4 +1,5 @@
 @startuml
+skinparam maxMessageSize 30
 autonumber
 
 ' ###### initilaization of the model ########
