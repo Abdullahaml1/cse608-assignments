@@ -11,14 +11,14 @@ Student "1"--"1" GameView
 
 GameController "1"--"1" GameView
 
+Controller <|-- LoginController
 Controller <|-- GameController
 Controller <|-- DashboardController
-Controller <|-- LoginController
+DataElement <|-- Course
 
 User "1"--"1" LoginForm
 LoginForm "1"--"1" LoginController 
 Controller "1"--"*" DataElement
-DataElement <|-- Course
 
 Course "1"--"*" Stage
 StageMaterial "*"--"1" Stage
