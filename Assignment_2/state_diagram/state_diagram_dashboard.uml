@@ -16,5 +16,6 @@ state EditCourseContent{
     InformRelatedstudents --> [*]
 
 }
-EditCourseContent --> [*]
+EditCourseContent --> logout 
+logout --> [*] :Exit
 @enduml
