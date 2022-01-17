@@ -7,5 +7,16 @@
  - Each instructor specifies the game type related to his course.
  - The VR game system is connected to the database that contains details to specific course.
  - The instructor have pre-defind tasks that each student can achieve.
+
+Game Assumptions: 
+==================
+* student can enroll in multiple course games 
+* The game consists of multiple stages 
+* Each stage consists of materials to browse and puzzles to solve
+* Once a student complete the stage, he can moves to the next one, and versa
+to complete the course game
+* If the student failed to solve the puzzle more than three times the system
+restart the stage and multiplies the score by decreasing factor 
+
  
  
