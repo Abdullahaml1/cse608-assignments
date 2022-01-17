@@ -18,8 +18,10 @@ SolvingPuzzle --> PlayingWithStageMaterials: answer puzzle correctly
 SolvingPuzzle --> GameStageStart: exeeds trials
 SolvingPuzzle --> FinishStage: passing all puzzles
 FinishStage -->GameStageStart: new stage
+FinishStage -->[*]: Exit
 }
 StagePlaying --> Active: pause the game
 
 StagePlaying --> CompleteGame: complete stages
+CompleteGame --> [*]: upload results to database
 @enduml
