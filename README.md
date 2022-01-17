@@ -1,7 +1,7 @@
 # cse608-assignments
 
 # Table of Content
-* [Assignemt1](#Assignment-1-(Thanks-to-ALLAH)[DONE])
+* [Assignemt1](#assignment-1-thanks-to-allahdone)
 * [Assignemt2](#Assignment-2)
 
 
