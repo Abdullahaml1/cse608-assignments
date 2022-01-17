@@ -16,18 +16,16 @@ GameStageStart --> PlayingWithStageMaterials: Interacting with the game
 
 PlayingWithStageMaterials --> BeginPuzzle: Reacheing puzzle
 
-BeginPuzzle --> SolvingPuzzle: answer the puzzle
-SolvingPuzzle --> SolvingPuzzle: wrong answer
-SolvingPuzzle --> PlayingWithStageMaterials: answer puzzle correctly
-SolvingPuzzle --> GameStageStart: exeeds trials
-SolvingPuzzle --> FinishStage: passing all puzzles
-FinishStage -->GameStageStart: new stage
-FinishStage -->[*]: Exit
+BeginPuzzle --> SolvingPuzzle: Answer puzzle
+SolvingPuzzle --> SolvingPuzzle: Wrong answer
+SolvingPuzzle --> PlayingWithStageMaterials: Correct answer
+SolvingPuzzle --> GameStageStart: Exceeds trials
+SolvingPuzzle --> FinishStage: Passing all puzzles
+FinishStage -->GameStageStart: New stage
 }
 StagePlaying --> Active: Pause game
 
 StagePlaying --> CompleteGame: Complete all stages
 
-StagePlaying --> CompleteGame: complete stages
-CompleteGame --> [*]: upload results to database
+CompleteGame --> Active
 @enduml
