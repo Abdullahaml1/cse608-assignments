@@ -1,25 +1,31 @@
 @startuml
-[*] --> Active
+[*] --> Offline
 
-Active --> StagePlaying: Press Start Game
+Offline --> Active: Open game
+
+Active --> Offline: Close game
+
+Active --> StagePlaying: Press Start
 
 
 
 state StagePlaying {
 
 [*] --> GameStageStart
-GameStageStart --> PlayingWithStageMaterials: interacting with the game
+GameStageStart --> PlayingWithStageMaterials: Interacting with the game
 
-PlayingWithStageMaterials --> BeginPuzzle: student reaches puzzle
+PlayingWithStageMaterials --> BeginPuzzle: Reacheing puzzle
 
-BeginPuzzle --> SolvingPuzzle: answer the puzzle
-SolvingPuzzle --> SolvingPuzzle: wrong answer
-SolvingPuzzle --> PlayingWithStageMaterials: answer puzzle correctly
-SolvingPuzzle --> GameStageStart: exeeds trials
-SolvingPuzzle --> FinishStage: passing all puzzles
-FinishStage -->GameStageStart: new stage
+BeginPuzzle --> SolvingPuzzle: Answer puzzle
+SolvingPuzzle --> SolvingPuzzle: Wrong answer
+SolvingPuzzle --> PlayingWithStageMaterials: Correct answer
+SolvingPuzzle --> GameStageStart: Exceeds trials
+SolvingPuzzle --> FinishStage: Passing all puzzles
+FinishStage -->GameStageStart: New stage
 }
-StagePlaying --> Active: pause the game
+StagePlaying --> Active: Pause game
 
-StagePlaying --> CompleteGame: complete stages
+StagePlaying --> CompleteGame: Complete all stages
+
+CompleteGame --> Active
 @enduml
