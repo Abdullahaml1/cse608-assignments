@@ -52,6 +52,9 @@ HD image: (https://files.fm/f/turr45vej)
 
 ## [state game link](https://plantuml.io/plantuml/uml/VLBDJW8n4BxFKypPX1VemO14ZGTbemSEniDa6POcfKiw0oZ6TxVjigGhu9uwty_NcUsCHIdeTktW_UO3HwDRd2sNpde6E1uoEAdLxjZWRCCU6rf7keDAYy6fQuNF-JUbXYj7NzOt1gl08WaB2l4J9UM11B_XrCrZpCfSfn-MMN4qpQskClDCoi6I4uDFFXwfrfIvZppggk_kgYjdtd5ZVRKz71mRV6MgLvmoDXa1AEXkljRj8jyR9bxs77frGLwMpqCRiocRpjJ_pZTjG-1Qhtk7lylW_MVDl13K7731y62zbUuUWnM9H1h9kUCm0eKW6VvUyC9xb5J33vHFEbYYYhRzbfoBfkrwurWv9PjJbNl8mG9GIefW6BDVn4t-1G00)
 
+## [HD pictures link]
+(https://files.fm/u/zwdt54der) 
+
 
 **It is required to build a software application in one of the following domains:**
 
